@@ -1,13 +1,13 @@
-import { RouteError } from "@src/common/util/route-errors";
-import HttpStatusCodes from "@src/common/constants/HttpStatusCodes";
+import { RouteError } from '@src/common/util/route-errors';
+import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
 
-import VinyleRepo from "@src/repos/VinyleRepo";
-import { IVinyle } from "@src/models/Vinyle";
+import VinyleRepo from '@src/repos/VinyleRepo';
+import { IVinyle } from '@src/models/Vinyle';
 
 /******************************************************************************
                                 Constants
 ******************************************************************************/
-export const VINYLE_NON_TROUVE = "Vinyle non trouvé";
+export const VINYLE_NON_TROUVE = 'Vinyle non trouvé';
 
 /******************************************************************************
                                 Fonctions

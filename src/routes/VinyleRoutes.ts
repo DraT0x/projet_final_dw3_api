@@ -1,7 +1,7 @@
-import HttpStatusCodes from "@src/common/constants/HttpStatusCodes";
-import { IReq, IRes } from "./common/types";
-import VinyleService from "@src/services/VinyleService";
-import { IVinyle } from "@src/models/Vinyle";
+import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
+import { IReq, IRes } from './common/types';
+import VinyleService from '@src/services/VinyleService';
+import { IVinyle } from '@src/models/Vinyle';
 
 /******************************************************************************
                                 Fonctions
@@ -44,18 +44,18 @@ async function updateVinyle(req: IReq, res: IRes) {
 
 async function supprimerVinyle(req: IReq, res: IRes) {
   const { id } = req.params;
-  await VinyleService.delete(id as string);
+  await VinyleService.supprimerVinyle(id as string);
   res.status(HttpStatusCodes.OK).end();
 }
 
 // **** Export default **** //
 
 export default {
-    getAll,
-    getByArtiste,
-    getByID,
-    getByTitre,
-    ajouterVinyle,
-    updateVinyle,
-    supprimerVinyle,
+  getAll,
+  getByArtiste,
+  getByID,
+  getByTitre,
+  ajouterVinyle,
+  updateVinyle,
+  supprimerVinyle,
 } as const;

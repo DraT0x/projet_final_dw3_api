@@ -3,7 +3,7 @@ import { Request, Response, NextFunction, Router } from 'express';
 import Paths from '@src/common/constants/Paths';
 import VinyleRoutes from './VinyleRoutes';
 import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
-import { Vinyle } from '@src/models/Vinyle';
+import { IVinyle, Vinyle } from '@src/models/Vinyle';
 
 /******************************************************************************
                                 Setup
@@ -12,26 +12,32 @@ import { Vinyle } from '@src/models/Vinyle';
 const apiRouter = Router();
 
 // ** Add VinyleRouter ** //
+interface VinyleRequest {
+  vinyle: IVinyle;
+}
 // ** Validation d'un vinyle ** //
 function validateVinyle(req: Request, res: Response, next: NextFunction) {
+  const body = req.body as VinyleRequest;
+  
   if (req.body === null) {
     res
       .status(HttpStatusCodes.BAD_REQUEST)
-      .send({ error: "Vinyle requis" })
+      .send({ error: 'Vinyle requis' })
       .end();
     return;
   }
-
-  if (req.body.vinyle === null) {
+  
+  if (body.vinyle === null || body.vinyle === undefined) {
     res
       .status(HttpStatusCodes.BAD_REQUEST)
-      .send({ error: "Vinyle requis" })
+      .send({ error: 'Vinyle requis' })
       .end();
     return;
   }
-
-  const nouveauVinyle = new Vinyle(req.body.vinyle);
+  
+  const nouveauVinyle = new Vinyle(body.vinyle);
   const error = nouveauVinyle.validateSync();
+  
   if (error !== null && error !== undefined) {
     res.status(HttpStatusCodes.BAD_REQUEST).send(error).end();
   } else {

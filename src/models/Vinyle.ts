@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from 'mongoose';
 
 export interface IChanson {
   nom: string;
@@ -20,7 +20,7 @@ export interface IVinyle {
 const ChansonSchema = new Schema<IChanson>({
   nom: {
     type: String,
-    required: [true, "Le nom de la chanson est obligatoire !"],
+    required: [true, 'Le nom de la chanson est obligatoire !'],
   },
   duree: { type: Number, required: false },
 });
@@ -33,10 +33,10 @@ const VinyleSchema = new Schema<IVinyle>({
   chansons: {
     type: [ChansonSchema],
     validate: {
-      validator: function (v) {
+      validator: function (v : IChanson[]) {
         return v.length > 0;
       },
-      message: "Il doit y avoir au moins une chanson sur le vinyle",
+      message: 'Il doit y avoir au moins une chanson sur le vinyle',
     },
   },
   genres: { type: [String], require: true },
@@ -47,4 +47,4 @@ const VinyleSchema = new Schema<IVinyle>({
 
 mongoose.pluralize(null);
 
-export const Vinyle = model<IVinyle>("Vinyle", VinyleSchema);
+export const Vinyle = model<IVinyle>('vinyles', VinyleSchema);

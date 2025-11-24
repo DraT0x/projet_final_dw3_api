@@ -3,8 +3,9 @@ import tseslint from 'typescript-eslint';
 import stylisticJs from '@stylistic/eslint-plugin-js';
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 import nodePlugin from 'eslint-plugin-n';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
+export default defineConfig(
   eslint.configs.recommended,
   nodePlugin.configs['flat/recommended-script'],
   ...tseslint.configs.strictTypeChecked,

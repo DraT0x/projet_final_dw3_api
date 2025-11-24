@@ -2,8 +2,9 @@
   "name": "projet_final_dw3",
   "version": "0.0.0",
   "scripts": {
-    "build": "",
+    "build": "ts-node ./scripts/build.ts",
     "dev": "node --env-file=.env -r ts-node/register ./src",
+    "lint": "eslint . --fix",
     "start": "NODE_ENV=production node -r ./config.js ./dist",
     "test": "cross-env NODE_ENV=test vitest"
   },

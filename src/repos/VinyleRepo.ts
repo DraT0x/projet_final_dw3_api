@@ -1,8 +1,4 @@
-import ENV from "@src/common/constants/ENV";
-import { IVinyle, Vinyle } from "@src/models/Vinyle";
-import { Console } from "console";
-
-import mongoose from "mongoose";
+import { IVinyle, Vinyle } from '@src/models/Vinyle';
 
 /******************************************************************************
                                 Fonctions
@@ -16,7 +12,7 @@ import mongoose from "mongoose";
  * @returns {IVinyle[]} Un tableau de tous les vinyles
  */
 async function getAll(): Promise<IVinyle[]> {
-    return await Vinyle.find().sort('titre')
+  return await Vinyle.find().sort('titre');
 }
 
 /**
@@ -27,10 +23,10 @@ async function getAll(): Promise<IVinyle[]> {
  * @returns {IVinyle[]} - Un/des vinyles si trouvé(s)
  */
 async function getByArtiste(artiste: string): Promise<IVinyle[] | null> {
-    const vinyles = await Vinyle.find({
-        artiste: artiste
-    })
-    return vinyles
+  const vinyles = await Vinyle.find({
+    artiste: artiste,
+  });
+  return vinyles;
 }
 
 /**
@@ -41,11 +37,11 @@ async function getByArtiste(artiste: string): Promise<IVinyle[] | null> {
  * @returns {IVinyle} - Un vinyle si trouvé
  */
 async function getByID(id: string): Promise<IVinyle | null> {
-    const vinyle = await Vinyle.findOne({
-        _id: id
-    })
+  const vinyle = await Vinyle.findOne({
+    _id: id,
+  });
 
-    return vinyle
+  return vinyle;
 }
 
 /**
@@ -56,10 +52,10 @@ async function getByID(id: string): Promise<IVinyle | null> {
  * @returns {IVinyle[]} - Un/des vinyles si trouvé(s)
  */
 async function getByTitre(titre: string): Promise<IVinyle[] | null> {
-    const vinyles = await Vinyle.find({
-        titre: titre
-    })
-    return vinyles
+  const vinyles = await Vinyle.find({
+    titre: titre,
+  });
+  return vinyles;
 }
 
 /****************************************
@@ -72,8 +68,8 @@ async function getByTitre(titre: string): Promise<IVinyle[] | null> {
  */
 
 async function ajouterVinyle(vinyle: IVinyle): Promise<void> {
-    const nouveauVinyle = new Vinyle(vinyle)
-    await nouveauVinyle.save();
+  const nouveauVinyle = new Vinyle(vinyle);
+  await nouveauVinyle.save();
 }
 
 /****************************************
@@ -85,25 +81,25 @@ async function ajouterVinyle(vinyle: IVinyle): Promise<void> {
  * @param {IVinyle} vinyle - Vinyle à modifier
  */
 async function updateVinyle(vinyle: IVinyle): Promise<void> {
-    const vinyleAUpdate = await Vinyle.findOne({ _id: vinyle.id })
-    if (vinyleAUpdate === null) throw new Error("Vinyle non trouvé");
+  const vinyleAUpdate = await Vinyle.findOne({ _id: vinyle.id });
+  if (vinyleAUpdate === null) throw new Error('Vinyle non trouvé');
 
-    vinyleAUpdate.titre = vinyle.titre;
-    vinyleAUpdate.artiste = vinyle.artiste;
-    vinyleAUpdate.chansons = vinyle.chansons;
-    vinyleAUpdate.genres = vinyle.genres;
-    vinyleAUpdate.date_parution = vinyle.date_parution;
-    vinyleAUpdate.prix_achat = vinyle.prix_achat;
-    vinyleAUpdate.possession = vinyle.possession;
+  vinyleAUpdate.titre = vinyle.titre;
+  vinyleAUpdate.artiste = vinyle.artiste;
+  vinyleAUpdate.chansons = vinyle.chansons;
+  vinyleAUpdate.genres = vinyle.genres;
+  vinyleAUpdate.date_parution = vinyle.date_parution;
+  vinyleAUpdate.prix_achat = vinyle.prix_achat;
+  vinyleAUpdate.possession = vinyle.possession;
 
-    await vinyleAUpdate.save()
+  await vinyleAUpdate.save();
 }
 
 /****************************************
                   DELETE
 *****************************************/
 async function supprimerVinyle(id: string): Promise<void> {
-    await Vinyle.deleteOne({ id: id });
+  await Vinyle.deleteOne({ id: id });
 }
 
 /******************************************************************************
@@ -111,11 +107,11 @@ async function supprimerVinyle(id: string): Promise<void> {
 ******************************************************************************/
 
 export default {
-    getAll,
-    getByArtiste,
-    getByID,
-    getByTitre,
-    ajouterVinyle,
-    updateVinyle,
-    supprimerVinyle,
+  getAll,
+  getByArtiste,
+  getByID,
+  getByTitre,
+  ajouterVinyle,
+  updateVinyle,
+  supprimerVinyle,
 } as const;
