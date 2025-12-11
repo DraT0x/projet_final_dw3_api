@@ -12,7 +12,7 @@ export interface IVinyle {
   artiste: string;
   chansons: IChanson[];
   genres: string[];
-  date_parution: Date;
+  date_parution: string;
   prix_achat?: number;
   possession: boolean;
 }
@@ -40,7 +40,7 @@ const VinyleSchema = new Schema<IVinyle>({
     },
   },
   genres: { type: [String], require: true },
-  date_parution: { type: Date, required: true },
+  date_parution: { type: String, required: true },
   prix_achat: { type: Number, required: false },
   possession: { type: Boolean, required: true },
 });
