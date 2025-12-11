@@ -1,13 +1,24 @@
 export default {
-  Base: '/api',
+  Base: "/api",
+  GenerateToken: {
+    Base: '/generatetoken',
+    Get: '/'
+  },
+  Utilisateurs: {
+    Base: "/utilisateurs",
+    Get: "/all",
+    Add: "/add",
+    Update: "/update",
+    Delete: "/delete/:id",
+  },
   Vinyle: {
-    Base: '/vinyles',
-    GetAll: '/',
-    GetByID: '/:idVinyle',
-    GetByArtiste: '/artiste/:nomArtiste',
-    GetByTitre: '/titre/:titreVinyle',
-    Add: '/',
-    Update: '/',
-    Delete: '/:id',
+    Base: "/vinyles",
+    GetAll: "/",
+    GetByID: "/:idVinyle",
+    GetByArtiste: "/artiste/:nomArtiste",
+    GetByTitre: "/titre/:titreVinyle",
+    Add: "/",
+    Update: "/",
+    Delete: "/:id",
   },
 } as const;

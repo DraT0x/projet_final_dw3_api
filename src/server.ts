@@ -11,6 +11,7 @@ import ENV from '@src/common/constants/ENV';
 import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
 import { RouteError } from '@src/common/util/route-errors';
 import { NodeEnvs } from '@src/common/constants';
+import authenticateToken from './services/authenticateToken';
 import cors from 'cors';
 
 
@@ -40,6 +41,8 @@ if (ENV.NodeEnv === NodeEnvs.Production) {
     app.use(helmet());
   }
 }
+
+app.use(authenticateToken);
 
 // Add APIs, must be after middleware
 app.use(Paths.Base, BaseRouter);
