@@ -16,11 +16,11 @@ export const UTILISATEUR_NOT_FOUND_ERR = 'Utilisateur non trouvé';
  * @returns {Promise} - Le jeton signé
  */
 async function generateToken(utilisateur: IUtilisateur): Promise<string> {
-  const utilisateurBD = (await UtilisateurService.getAll()).filter(
-    (utilisateur) => utilisateur.courriel === utilisateur.courriel,
-  )[0];
+  const utilisateurBD = (await UtilisateurService.getAll()).find(
+    (u) => u.courriel === utilisateur.courriel,
+  );
   if (utilisateurBD && utilisateurBD.motDePasse === utilisateur.motDePasse) {
-    return jwt.sign(utilisateur.courriel, ENV.Jwtsecret as string);
+    return jwt.sign(utilisateur.courriel, ENV.Jwtsecret);
   } else {
     return '';
   }

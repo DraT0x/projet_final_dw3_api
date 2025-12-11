@@ -9,5 +9,5 @@ function getAll(): Promise<IUtilisateur[]> {
 }
 
 export default {
-    getAll
-}
+  getAll,
+};

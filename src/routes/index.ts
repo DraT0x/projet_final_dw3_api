@@ -1,13 +1,12 @@
-import { Request, Response, NextFunction, Router } from "express";
+import { Request, Response, NextFunction, Router } from 'express';
 
-import Paths from "@src/common/constants/Paths";
-import VinyleRoutes from "./VinyleRoutes";
-import UtilisateurRoutes from "./UtilisateurRoutes";
-import JetonRoutes from "./JetonRoutes";
+import Paths from '@src/common/constants/Paths';
+import VinyleRoutes from './VinyleRoutes';
+import UtilisateurRoutes from './UtilisateurRoutes';
+import JetonRoutes from './JetonRoutes';
 
-import HttpStatusCodes from "@src/common/constants/HttpStatusCodes";
-import { IVinyle, Vinyle } from "@src/models/Vinyle";
-import { token } from "morgan";
+import HttpStatusCodes from '@src/common/constants/HttpStatusCodes';
+import { IVinyle, Vinyle } from '@src/models/Vinyle';
 
 /******************************************************************************
                                 Setup
@@ -30,7 +29,7 @@ function validateVinyle(req: Request, res: Response, next: NextFunction) {
   if (req.body === null) {
     res
       .status(HttpStatusCodes.BAD_REQUEST)
-      .send({ error: "Vinyle requis" })
+      .send({ error: 'Vinyle requis' })
       .end();
     return;
   }
@@ -38,7 +37,7 @@ function validateVinyle(req: Request, res: Response, next: NextFunction) {
   if (body.vinyle === null || body.vinyle === undefined) {
     res
       .status(HttpStatusCodes.BAD_REQUEST)
-      .send({ error: "Vinyle requis" })
+      .send({ error: 'Vinyle requis' })
       .end();
     return;
   }
@@ -81,8 +80,14 @@ const utilisateurRouter = Router();
 
 utilisateurRouter.get(Paths.Utilisateurs.Get, UtilisateurRoutes.getAll);
 // utilisateurRouter.post(Paths.Utilisateurs.Add, UtilisateurRoutes.add);
-// utilisateurRouter.put(Paths.Utilisateurs.Update, UtilisateurRoutes.update);
-// utilisateurRouter.delete(Paths.Utilisateurs.Delete, UtilisateurRoutes.delete);
+// utilisateurRouter.put(
+//   Paths.Utilisateurs.Update,
+//   UtilisateurRoutes.update,
+// );
+// utilisateurRouter.delete(
+//   Paths.Utilisateurs.Delete,
+//   UtilisateurRoutes.delete,
+// );
 
 apiRouter.use(Paths.Utilisateurs.Base, utilisateurRouter);
 

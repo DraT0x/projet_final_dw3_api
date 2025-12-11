@@ -1,16 +1,11 @@
+// Erreur de build fixé par Claude.AI - 2025-12-10
 import JetonService from '@src/services/JetonService';
-import Utilisateur from '@src/models/Utilisateur';
+import { IUtilisateur } from '@src/models/Utilisateur';
 import { IReq, IRes } from './common/types';
-import { parseReq } from './common/util';
-// **** Functions **** //
 
 /******************************************************************************
-                                Constants
+                                Functions
 ******************************************************************************/
-
-const Validators = {
-  generatetoken: parseReq({ utilisateurLogin: Utilisateur.testlogin }),
-} as const;
 
 /**
  * Générer un jeton.
@@ -19,12 +14,14 @@ const Validators = {
  * @param {IRes} res - La réponse du serveur
  */
 async function generateToken(req: IReq, res: IRes) {
-  const { utilisateurLogin } = Validators.generatetoken(req.body);
+  const utilisateurLogin = req.body.utilisateurLogin as IUtilisateur;
   const token = await JetonService.generateToken(utilisateurLogin);
   return res.send({ token: token });
 }
 
-// **** Export default **** //
+/******************************************************************************
+                            Export default
+******************************************************************************/
 
 export default {
   generateToken,

@@ -1,3 +1,4 @@
+// Erreur de build fixé par Claude.AI - 2025-12-10
 import mongoose, { Schema, model } from 'mongoose';
 
 /******************************************************************************
@@ -11,10 +12,16 @@ export interface IUtilisateur {
 }
 
 const UtilisateurSchema = new Schema<IUtilisateur>({
-  courriel: { type: String, required: [true, 'Le courriel est requis']},
-  motDePasse: { type: String, required: [true, 'Le mot de passe est requis']},
+  courriel: { type: String, required: [true, 'Le courriel est requis'] },
+  motDePasse: {
+    type: String,
+    required: [true, 'Le mot de passe est requis'],
+  },
 });
 
 mongoose.pluralize(null);
 
-export const Utilisateur = model<IUtilisateur>('utilisateurs', UtilisateurSchema);
+export const Utilisateur = model<IUtilisateur>(
+  'utilisateurs',
+  UtilisateurSchema,
+);

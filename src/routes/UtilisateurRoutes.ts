@@ -12,5 +12,5 @@ async function getAll(_: IReq, res: IRes) {
 }
 
 export default {
-    getAll
-}
+  getAll,
+};
