@@ -78,7 +78,7 @@ apiRouter.use(Paths.GenerateToken.Base, tokenRouter);
 ******************************************************************************/
 const utilisateurRouter = Router();
 
-utilisateurRouter.get(Paths.Utilisateurs.Get, UtilisateurRoutes.getAll);
+utilisateurRouter.get(Paths.Utilisateurs.GetAll, UtilisateurRoutes.getAll);
 // utilisateurRouter.post(Paths.Utilisateurs.Add, UtilisateurRoutes.add);
 // utilisateurRouter.put(
 //   Paths.Utilisateurs.Update,

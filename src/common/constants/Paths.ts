@@ -6,7 +6,7 @@ export default {
   },
   Utilisateurs: {
     Base: '/utilisateurs',
-    Get: '/all',
+    GetAll: '/',
     Add: '/add',
     Update: '/update',
     Delete: '/delete/:id',
