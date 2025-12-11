@@ -69,7 +69,7 @@ apiRouter.use(Paths.Vinyle.Base, VinyleRouter);
 const tokenRouter = Router();
 
 // Generate Token
-tokenRouter.get(Paths.GenerateToken.Get, JetonRoutes.generateToken);
+tokenRouter.post(Paths.GenerateToken.Get, JetonRoutes.generateToken);
 
 apiRouter.use(Paths.GenerateToken.Base, tokenRouter);
 
