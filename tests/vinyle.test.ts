@@ -49,7 +49,7 @@ const DB_VINYLES: IVinyle[] = [
       { nom: 'The Court of the Crimson King' },
     ],
     genres: ['Rock Progressif'],
-    date_parution: new Date(1969, 10, 10),
+    date_parution: "1969-10-10",
     possession: true,
   },
   {
