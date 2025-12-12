@@ -99,7 +99,7 @@ async function updateVinyle(vinyle: IVinyle): Promise<void> {
                   DELETE
 *****************************************/
 async function supprimerVinyle(id: string): Promise<void> {
-  await Vinyle.deleteOne({ id: id });
+  await Vinyle.deleteOne({ _id: id });
 }
 
 /******************************************************************************
